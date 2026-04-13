@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nostr Resources for New Users</title>
+  <meta name="description" content="A curated guide to Nostr resources including videos, podcasts, articles, and tools for new users joining the decentralized social protocol.">
+  <meta property="og:title" content="Nostr Resources for New Users">
+  <meta property="og:description" content="Your guide to navigating the Nostr ecosystem — videos, podcasts, articles, and more.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0e1a;
+      --bg-glow: radial-gradient(ellipse at 50% 0%, rgba(168, 85, 247, 0.08) 0%, transparent 60%);
+      --surface: rgba(255, 255, 255, 0.04);
+      --surface-hover: rgba(255, 255, 255, 0.07);
+      --border: rgba(168, 85, 247, 0.15);
+      --border-hover: rgba(168, 85, 247, 0.4);
+      --text: #e0e0f0;
+      --text-muted: #9090b0;
+      --accent: #a855f7;
+      --accent-soft: rgba(168, 85, 247, 0.15);
+      --accent-glow: rgba(168, 85, 247, 0.25);
+      --link: #c084fc;
+      --link-hover: #d8b4fe;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      background-image: var(--bg-glow);
+      background-attachment: fixed;
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* --- Sticky nav pills --- */
+    .nav-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14, 14, 26, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.7rem 1rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-pills {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      list-style: none;
+      white-space: nowrap;
+    }
+
+    .nav-pill {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      font-family: 'Comfortaa', sans-serif;
+    }
+
+    .nav-pill:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--white);
+      transform: scale(1.05);
+    }
+
+    /* --- Hero --- */
+    .hero {
+      text-align: center;
+      padding: 4rem 1.5rem 2.5rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .hero-orb {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #c084fc, #7c3aed 60%, #4c1d95);
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 0 40px rgba(168, 85, 247, 0.3), 0 0 80px rgba(168, 85, 247, 0.1);
+      animation: pulse-glow 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 40px rgba(168, 85, 247, 0.3), 0 0 80px rgba(168, 85, 247, 0.1); }
+      50% { box-shadow: 0 0 50px rgba(168, 85, 247, 0.45), 0 0 100px rgba(168, 85, 247, 0.15); }
+    }
+
+    h1 {
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* --- Sections --- */
+    .container {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    .section {
+      margin-top: 3rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    h2 {
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    /* --- Resource cards --- */
+    .resource-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .resource-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 1.2rem 1.5rem;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .resource-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .resource-card:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(168, 85, 247, 0.08);
+    }
+
+    .resource-card:hover::before {
+      opacity: 1;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+    }
+
+    .card-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      margin-top: 0.1rem;
+    }
+
+    .dot-video { background: rgba(239, 68, 68, 0.15); }
+    .dot-podcast { background: rgba(34, 197, 94, 0.15); }
+    .dot-article { background: rgba(59, 130, 246, 0.15); }
+    .dot-explore { background: rgba(168, 85, 247, 0.15); }
+
+    .card-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .resource-title {
+      font-weight: 600;
+      color: var(--white);
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .resource-source {
+      color: var(--accent);
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+
+    .resource-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 0.35rem;
+      line-height: 1.6;
+    }
+
+    .resource-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--link);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      font-family: 'Comfortaa', sans-serif;
+    }
+
+    .resource-link:hover {
+      background: var(--accent-glow);
+      color: var(--white);
+      transform: scale(1.03);
+    }
+
+    .resource-link svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    /* --- Tips section --- */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+    }
+
+    .tip-bubble {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.2rem 1.3rem;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .tip-bubble:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .hashtag {
+      display: inline-block;
+      font-family: 'Comfortaa', monospace;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .tip-desc {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    /* --- Footer --- */
+    footer {
+      margin-top: 3.5rem;
+      text-align: center;
+      padding-bottom: 2rem;
+    }
+
+    .footer-orb {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin: 0 auto 1rem;
+      opacity: 0.5;
+    }
+
+    footer p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--link);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: var(--link-hover);
+    }
+
+    /* --- Mobile --- */
+    @media (max-width: 640px) {
+      .hero {
+        padding: 3rem 1rem 2rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .container {
+        padding: 0 1rem 3rem;
+      }
+
+      .nav-pills {
+        justify-content: flex-start;
+        padding: 0 0.5rem;
+      }
+
+      .resource-card {
+        padding: 1rem 1.1rem;
+        border-radius: 20px;
+      }
+
+      .card-dot {
+        width: 30px;
+        height: 30px;
+        font-size: 0.85rem;
+      }
+
+      .tips-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky navigation -->
+  <nav class="nav-bar">
+    <ul class="nav-pills">
+      <li><a class="nav-pill" href="#videos">Videos</a></li>
+      <li><a class="nav-pill" href="#podcasts">Podcasts</a></li>
+      <li><a class="nav-pill" href="#articles">Articles</a></li>
+      <li><a class="nav-pill" href="#tips">Tips</a></li>
+      <li><a class="nav-pill" href="#explore">Explore</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-orb"></div>
+    <h1>Nostr Resources for New Users</h1>
+    <p>Welcome new Nostriches! Nostr has a large and passionate community with an equally diverse and thriving ecosystem. Use this guide to help navigate this decentralized and censorship-resistant communication protocol.</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Videos -->
+    <section class="section" id="videos">
+      <div class="section-header">
+        <div class="section-icon">&#9654;</div>
+        <h2>Videos</h2>
+      </div>
+      <ul class="resource-list">
+        <li class="resource-card">
+          <div class="card-top">
+            <div class="card-dot dot-video">&#9654;</div>
+            <div class="card-body">
+              <div class="resource-title">Social Media is Broken. Can We Fix It?</div>
+              <div class="resource-desc">Explores the fundamental problems with centralized social media and how Nostr offers a real alternative.</div>
+              <a class="resource-link" href="https://youtu.be/aA-jiiepOrE" target="_blank" rel="noopener">Watch <svg viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="resource-card">
+          <div class="card-top">
+            <div class="card-dot dot-video">&#9654;</div>
+            <div class="card-body">
+              <div class="resource-title">Jack Dorsey &mdash; Tech and Freedom</div>
+              <div class="resource-desc">Jack Dorsey discusses Nostr's permissionless nature and why open protocols matter for freedom of expression.</div>
+              <a class="resource-link" href="https://youtu.be/mXLK4kWFEgc" target="_blank" rel="noopener">Watch <svg viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="resource-card">
+          <div class="card-top">
+            <div class="card-dot dot-video">&#9654;</div>
+            <div class="card-body">
+              <div class="resource-title">Nostr for Beginners <span class="resource-source">(Derek Ross)</span></div>
+              <div class="resource-desc">A Nostr 101 talk from the Nostr World conference in Riga covering the basics for newcomers.</div>
+              <a class="resource-link" href="https://www.youtube.com/watch?v=NVm_jGdwTjQ" target="_blank" rel="noopener">Watch <svg viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="resource-card">
+          <div class="card-top">
+            <div class="card-dot dot-video">&#9654;</div>
+            <div class="card-body">
+              <div class="resource-title">Nostr: All Your Silos Are Broken</div>
+              <div class="resource-desc">A panel featuring Martti Malmi, Aleksandar Svetski, Pablof7z, Miljan, and Derek Ross discussing how Nostr breaks down the technical and social silos of centralized platforms.</div>
+              <a class="resource-link" href="https://youtu.be/SSFVR5ZXOuA" target="_blank" rel="noopener">Watch <svg viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="resource-card">
+          <div class="card-top">
+            <div class="card-dot dot-video">&#9654;</div>
+            <div class="card-body">
+              <div class="resource-title">Decentralizing Social Media: Bitcoin, Nostr &amp; Freedom Tech <span class="resource-source">(Martti Malmi &amp; Derek Ross)</span></div>
+              <div class="resource-desc">A conversation on how Bitcoin and Nostr work together to decentralize social media and advance freedom tech.</div>
+              <a class="resource-link" href="https://www.youtube.com/watch?v=WYIbTxlVS0Q" target="_blank" rel="noopener">Watch <svg viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg></a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Podcasts -->
+    <section class="section" id="podcasts">
+      <div class="section-header">
+        <div class="section-icon">&#127911;</div>
+        <h2>Podcasts</h2>
+      </div>
+      <ul class="resource-list">
+        <li class="resource-card">
+          <div class="card-top">
+            <div class="card-dot dot-podcast">&#127911;</div>
+            <div class="card-body">
+              <div class="resource-title">Plebchain Radio</div>
+              <div class="resource-desc">Many episodes are Nostr-focused and very informative.</div>
+              <a class="resource-link" href="https://fountain.fm/show/0N6GGdZuYNNG7ysagCg9" target="_blank" rel="noopener">Listen <svg viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="resource-card">
+          <div class="card-top">
+            <div class="card-dot dot-podcast">&#127911;</div>
+            <div class="card-body">
+              <div class="resource-title">Thank God for Nostr</div>
+              <div class="resource-desc">A more technical approach to Nostr.</div>
+              <a class="resource-link" href="https://fountain.fm/show/vnmoRQQ50siLFRE8k061" target="_blank" rel="noopener">Listen <svg viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="resource-card">
+          <div class="card-top">
+            <div class="card-dot dot-podcast">&#127911;</div>
+            <div class="card-body">
+              <div class="resource-title">Soapbox Sessions</div>
+              <div class="resource-desc">Conversations about Nostr and the Soapbox ecosystem.</div>
+              <a class="resource-link" href="https://fountain.fm/show/7473968" target="_blank" rel="noopener">Listen <svg viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="resource-card">
+          <div class="card-top">
+            <div class="card-dot dot-podcast">&#127911;</div>
+            <div class="card-body">
+              <div class="resource-title">Nostr Compass</div>
+              <div class="resource-desc">A deep technical dive into Nostr development.</div>
+              <a class="resource-link" href="https://fountain.fm/show/hgrLiBJH0Vt07I5QI3dB" target="_blank" rel="noopener">Listen <svg viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg></a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Articles & Guides -->
+    <section class="section" id="articles">
+      <div class="section-header">
+        <div class="section-icon">&#128218;</div>
+        <h2>Articles &amp; Guides</h2>
+      </div>
+      <ul class="resource-list">
+        <li class="resource-card">
+          <div class="card-top">
+            <div class="card-dot dot-article">&#128218;</div>
+            <div class="card-body">
+              <div class="resource-title">What is Nostr? <span class="resource-source">(River)</span></div>
+              <div class="resource-desc">Discover the basics of Nostr.</div>
+              <a class="resource-link" href="https://river.com/learn/what-is-nostr/" target="_blank" rel="noopener">Read <svg viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="resource-card">
+          <div class="card-top">
+            <div class="card-dot dot-article">&#128218;</div>
+            <div class="card-body">
+              <div class="resource-title">The Power of Nostr <span class="resource-source">(Lyn Alden)</span></div>
+              <div class="resource-desc">A thorough deep dive into Nostr.</div>
+              <a class="resource-link" href="https://www.lynalden.com/the-power-of-nostr/" target="_blank" rel="noopener">Read <svg viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="resource-card">
+          <div class="card-top">
+            <div class="card-dot dot-article">&#128218;</div>
+            <div class="card-body">
+              <div class="resource-title">Grow Nostr</div>
+              <div class="resource-desc">A community-driven resource with guides for getting started, growing your audience, and making the most of Nostr.</div>
+              <a class="resource-link" href="https://grownostr.org" target="_blank" rel="noopener">Visit <svg viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="resource-card">
+          <div class="card-top">
+            <div class="card-dot dot-article">&#128218;</div>
+            <div class="card-body">
+              <div class="resource-title">Nostr 101 <span class="resource-source">(Soapbox)</span></div>
+              <div class="resource-desc">A beginner's guide covering what Nostr is, how to create an account, how it compares to the Fediverse and Bluesky, and what apps are available across the ecosystem.</div>
+              <a class="resource-link" href="https://soapbox.pub/blog/nostr101/" target="_blank" rel="noopener">Read <svg viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="resource-card">
+          <div class="card-top">
+            <div class="card-dot dot-article">&#128218;</div>
+            <div class="card-body">
+              <div class="resource-title">Divine is Built Different</div>
+              <div class="resource-desc">Explains how Divine brings short-form looping video to Nostr, giving creators true ownership of their audience and content without ads or algorithmic manipulation.</div>
+              <a class="resource-link" href="https://about.divine.video/blog/divine-is-built-different-heres-why-that-matters/" target="_blank" rel="noopener">Read <svg viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="resource-card">
+          <div class="card-top">
+            <div class="card-dot dot-article">&#128218;</div>
+            <div class="card-body">
+              <div class="resource-title">Are You Even a Bitcoiner If You're Not on Nostr? <span class="resource-source">(Bitcoin Magazine)</span></div>
+              <div class="resource-desc">An interview with Derek Ross on why Nostr is the natural complement to Bitcoin and why every Bitcoiner should be on the protocol.</div>
+              <a class="resource-link" href="https://bitcoinmagazine.com/conference/a-bitcoiner-must-be-on-nostr" target="_blank" rel="noopener">Read <svg viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg></a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Tips & Hashtags -->
+    <section class="section" id="tips">
+      <div class="section-header">
+        <div class="section-icon">&#128161;</div>
+        <h2>Tips &amp; Hashtags</h2>
+      </div>
+      <div class="tips-grid">
+        <div class="tip-bubble">
+          <div class="hashtag">#HOWDONOSTR</div>
+          <div class="tip-desc">Browse this hashtag on Nostr for notes explaining several Nostr concepts and features.</div>
+        </div>
+        <div class="tip-bubble">
+          <div class="hashtag">#asknostr</div>
+          <div class="tip-desc">Ask your questions with this hashtag and the community will help you out.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Explore the Ecosystem -->
+    <section class="section" id="explore">
+      <div class="section-header">
+        <div class="section-icon">&#127759;</div>
+        <h2>Explore the Ecosystem</h2>
+      </div>
+      <ul class="resource-list">
+        <li class="resource-card">
+          <div class="card-top">
+            <div class="card-dot dot-explore">&#127759;</div>
+            <div class="card-body">
+              <div class="resource-title">Nostr.how</div>
+              <div class="resource-desc">A comprehensive resource covering the protocol, clients, relays, zaps, NIP-05 verification, and more. Available in multiple languages and a great starting point for understanding how Nostr works under the hood.</div>
+              <a class="resource-link" href="https://nostr.how" target="_blank" rel="noopener">Explore <svg viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="resource-card">
+          <div class="card-top">
+            <div class="card-dot dot-explore">&#127759;</div>
+            <div class="card-body">
+              <div class="resource-title">Nostrapps</div>
+              <div class="resource-desc">Nostr has dozens of apps and use cases beyond Twitter-like social clients. Your portable digital identity lets you hop from app to app.</div>
+              <a class="resource-link" href="https://nostrapps.com" target="_blank" rel="noopener">Browse apps <svg viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg></a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-orb"></div>
+      <p>Built with care for the Nostr community &mdash; <a href="https://andotherstuff.org" target="_blank" rel="noopener">And Other Stuff</a></p>
+    </footer>
+
+  </div>
+</body>
+</html>
