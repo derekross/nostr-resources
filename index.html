@@ -115,6 +115,29 @@
       animation: pulse-glow 4s ease-in-out infinite;
     }
 
+    .hero-image {
+      width: 100%;
+      max-width: 620px;
+      margin: 0 auto 2rem;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      box-shadow: 0 0 40px rgba(168, 85, 247, 0.12), 0 4px 24px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease;
+    }
+
+    .hero-image:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 0 60px rgba(168, 85, 247, 0.2), 0 8px 32px rgba(0, 0, 0, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .hero-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
     @keyframes pulse-glow {
       0%, 100% { box-shadow: 0 0 40px rgba(168, 85, 247, 0.3), 0 0 80px rgba(168, 85, 247, 0.1); }
       50% { box-shadow: 0 0 50px rgba(168, 85, 247, 0.45), 0 0 100px rgba(168, 85, 247, 0.15); }
@@ -373,6 +396,11 @@
         font-size: 1rem;
       }
 
+      .hero-image {
+        border-radius: 20px;
+        margin: 0 auto 1.5rem;
+      }
+
       .container {
         padding: 0 1rem 3rem;
       }
@@ -421,6 +449,9 @@
   <!-- Hero -->
   <header class="hero">
     <div class="hero-orb"></div>
+    <div class="hero-image">
+      <img src="https://grownostr.org/images/nostr-booth.jpg" alt="Nostr booth at a conference featuring purple branding, the Nostr ostrich logo, and planet-shaped decorations" loading="eager">
+    </div>
     <h1>Nostr Resources for New Users</h1>
     <p>Welcome new Nostriches! Nostr has a large and passionate community with an equally diverse and thriving ecosystem. Use this guide to help navigate this decentralized and censorship-resistant communication protocol.</p>
   </header>
