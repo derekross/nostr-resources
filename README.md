@@ -34,6 +34,6 @@ Add resources by editing `index.html` directly. Follow the existing card markup 
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 or later — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the GNU Affero General Public License v3.0 or later — see the [LICENSE](LICENSE) file for details.
 
 Built by [And Other Stuff](https://andotherstuff.org) for the Nostr community.
